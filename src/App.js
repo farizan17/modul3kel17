@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect} from "react";
+import TextInput from "./components/TextInput";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    
+    const [loading, setLoading] = React.useState(true) 
 
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000)
+    }, [])
+
+    useEffect(() => {
+        if (!loading) alert("loading selesai")
+    }, [loading])
+
+    if (loading) return <div>loading...</div>
+
+
+    return <div className="">
+      <TextInput />
+        
+    </div>
+}
 export default App;
